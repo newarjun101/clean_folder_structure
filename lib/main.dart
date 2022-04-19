@@ -9,14 +9,9 @@ import 'package:hive_innovation_shop/app/presentation/routes/route_pages_name.da
 import 'package:hive_innovation_shop/app/presentation/screens/auth_screens/login_screen/login_screen.dart';
 
 void main() {
- // runApp(const MyApp());
+  // runApp(const MyApp());
   runApp(DevicePreview(
-
-      enabled: !kReleaseMode,
-
-      builder: (context)=> const MyApp())
-
-  );
+      enabled: !kDebugMode, builder: (context) => const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -27,9 +22,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(builder: (_) {
       return GetMaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: StyleTheme().getLightTheme(),
-        initialRoute: RoutePagesName.kHome,//love for this
+        initialRoute: RoutePagesName.kProductDetail, //love for this
         getPages: RoutePages().routerPage,
       );
     });

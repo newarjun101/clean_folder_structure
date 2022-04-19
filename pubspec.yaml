@@ -18,11 +18,13 @@ dependencies:
 
 
   cupertino_icons: ^1.0.2
-  flutter_screenutil: ^5.4.0+1
-  get: ^4.6.1
-  device_preview: ^1.0.0
-  http: ^0.13.4
-  flutter_svg: ^1.0.3
+  flutter_screenutil: ^5.4.0+1 #for responsive ui
+  get: ^4.6.1 #for state management
+  device_preview: ^1.0.0 #to test responsive on different devices
+  http: ^0.13.4 #for the api request
+  flutter_svg: ^1.0.3 #to use custom svg files
+  cached_network_image: ^3.2.0 #to show network image
+ # hive: ^2.1.0 #for offline database
 
 
 dev_dependencies:
