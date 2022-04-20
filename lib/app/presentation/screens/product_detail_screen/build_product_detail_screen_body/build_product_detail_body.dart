@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_innovation_shop/app/core/utils/font_and_margins.dart';
 import 'package:hive_innovation_shop/app/presentation/screens/product_detail_screen/build_product_detail_screen_body/product_detail_tab_view.dart';
+import 'package:hive_innovation_shop/app/view_model/product_detail_view_model.dart';
 
 class BuildProductDetailBody extends StatelessWidget {
-  const BuildProductDetailBody({Key? key}) : super(key: key);
+ final ProductDetailViewModel productDetailVM;
+  const BuildProductDetailBody({Key? key, required this.productDetailVM}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,11 +44,14 @@ class BuildProductDetailBody extends StatelessWidget {
         SizedBox(
           height: kDefaultMarginHeight*2.sp,
         ),
+        SizedBox(
+          height: kDefaultMarginHeight*2.sp,
+        ),
 
         Expanded(
           child: Padding(
             padding:  EdgeInsets.symmetric(horizontal: kDefaultMarginWidth.w),
-            child: const ProductDetailTabView(),
+            child:  ProductDetailTabView(productDetailViewModel: productDetailVM,),
           ),
         )
 

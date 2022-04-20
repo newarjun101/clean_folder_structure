@@ -11,7 +11,7 @@ import 'package:hive_innovation_shop/app/presentation/screens/auth_screens/login
 void main() {
   // runApp(const MyApp());
   runApp(DevicePreview(
-      enabled: !kDebugMode, builder: (context) => const MyApp()));
+      enabled: false, builder: (context) => const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: StyleTheme().getLightTheme(),
-        initialRoute: RoutePagesName.kProductDetail, //love for this
+        initialRoute: RoutePagesName.kSuccess, //love for this
         getPages: RoutePages().routerPage,
       );
     });
