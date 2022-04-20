@@ -26,6 +26,7 @@ dependencies:
   flutter_svg: ^1.0.3 #to use custom svg files
   cached_network_image: ^3.2.0 #to show network image
   flutter_rating_bar: ^4.0.0 #FOR THE RATING OUR SERVICE IN APP
+  flutter_secure_storage: ^5.0.2 #i've been using this To save login token .
  # hive: ^2.1.0 #for offline database
 
 

@@ -10,6 +10,7 @@ import 'package:hive_innovation_shop/app/presentation/screens/auth_screens/login
 
 void main() {
   // runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(DevicePreview(
       enabled: false, builder: (context) => const MyApp()));
 }
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: StyleTheme().getLightTheme(),
-        initialRoute: RoutePagesName.kSuccess, //love for this
+        initialRoute: RoutePagesName.kLogin, //love for this
         getPages: RoutePages().routerPage,
       );
     });

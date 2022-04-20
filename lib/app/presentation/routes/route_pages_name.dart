@@ -4,4 +4,6 @@ class RoutePagesName {
   static String kProductDetail = "/product-detail";
   static String kCart ="/cart";
   static String kSuccess = "/success";
+  static String kSplash = "/splash";
+  static String kLogin = "/login";
 }
