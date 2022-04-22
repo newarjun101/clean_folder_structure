@@ -2,14 +2,18 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:hive_innovation_shop/app/core/theme/theme.dart';
+import 'package:hive_innovation_shop/app/core/utils/secure_constants.dart';
 import 'package:hive_innovation_shop/app/presentation/routes/route_pages.dart';
 import 'package:hive_innovation_shop/app/presentation/routes/route_pages_name.dart';
 import 'package:hive_innovation_shop/app/presentation/screens/auth_screens/login_screen/login_screen.dart';
 
-void main() {
+void main() async{
   // runApp(const MyApp());
+  await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
   runApp(DevicePreview(
       enabled: false, builder: (context) => const MyApp()));
@@ -18,15 +22,19 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
+
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
+    print(GetStorage().read(kToken));
     return ScreenUtilInit(builder: (_) {
       return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: StyleTheme().getLightTheme(),
-        initialRoute: RoutePagesName.kLogin, //love for this
+        initialRoute: GetStorage().read(kToken)!=null?RoutePagesName.kINITIAL : RoutePagesName.kLogin, //love for this
         getPages: RoutePages().routerPage,
       );
     });

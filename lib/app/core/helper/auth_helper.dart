@@ -1,3 +1,10 @@
+///Most of the time i prefer to use flutter secure storage with helper class but now i'm going to use
+///but now i'm not going to use it coz this is just a demo app
+
+
+
+
+/*
 import 'dart:convert';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -33,3 +40,4 @@ class AuthHelper {
     }
   }
 }
+*/

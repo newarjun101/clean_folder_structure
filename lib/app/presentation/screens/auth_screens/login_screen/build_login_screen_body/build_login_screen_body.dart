@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:hive_innovation_shop/app/core/utils/font_and_margins.dart';
 import 'package:hive_innovation_shop/app/presentation/reusable_widgets/custom_button.dart';
 import 'package:hive_innovation_shop/app/presentation/reusable_widgets/custom_text_form_field.dart';
 import 'package:hive_innovation_shop/app/presentation/reusable_widgets/text_view.dart';
+import 'package:hive_innovation_shop/app/view_model/auth/auth_view_model.dart';
 
 class BuildLoginScreenBody extends StatelessWidget {
-  const BuildLoginScreenBody({Key? key}) : super(key: key);
+  final AuthViewModel authViewModel;
+
+  const BuildLoginScreenBody({Key? key, required this.authViewModel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,21 +58,40 @@ class BuildLoginScreenBody extends StatelessWidget {
           CustomTextFormField(
               suffixIcon: Icons.visibility,
               visible: true,
-              suffixIconClick: ()=>print("hi"),
+              suffixIconClick: () => print("hi"),
               hintColor: Theme.of(context).primaryColor,
               hintText: "hintText",
               focusColor: Theme.of(context).primaryColor,
               isNumber: false,
               textController: passwordTextController,
               focusNode: passwordNode),
-
           SizedBox(
-            height: 32.h ,
+            height: 32.h,
+          ),
+          Obx(
+            () => authViewModel.isError.isFalse
+                ? TextView(
+                    title: authViewModel.message.value,
+                    fontSize: kMediumFont14.sp,
+                    textColor: Theme.of(context).textTheme.labelMedium!.color,
+                  )
+                : const SizedBox(),
+          ),
+          SizedBox(
+            height: 32.h,
           ),
           SizedBox(
             width: double.infinity,
-            child: CustomButton(buttonText: "Login", onClick: ()=>print("hahahah"), buttonTextColor: Theme.of(context).colorScheme.primaryContainer
-                , buttonColor: Theme.of(context).primaryColor,radius: 8.h,),
+            child: CustomButton(
+              buttonText: "Login",
+              onClick: () => authViewModel.login(
+                  password: passwordTextController.text,
+                  username: emailTextController.text,
+                  context: context),
+              buttonTextColor: Theme.of(context).colorScheme.primaryContainer,
+              buttonColor: Theme.of(context).primaryColor,
+              radius: 8.h,
+            ),
           )
         ],
       ),

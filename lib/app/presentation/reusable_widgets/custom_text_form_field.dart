@@ -31,10 +31,9 @@ class CustomTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       autofocus: false,
-      obscureText: visible??false,
-
+      obscureText: visible ?? false,
       keyboardType:
-          isNumber ?? false ? TextInputType.text : TextInputType.number,
+          isNumber ?? false ? TextInputType.number : TextInputType.text,
       cursorColor: Theme.of(context).primaryColor,
       controller: textController,
       decoration: InputDecoration(

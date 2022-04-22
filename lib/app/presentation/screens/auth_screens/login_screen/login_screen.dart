@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../../../view_model/auth/auth_view_model.dart';
 import 'build_login_screen_body/build_login_screen_body.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -7,8 +9,9 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body:  BuildLoginScreenBody(),
+    final authVm = Get.find<AuthViewModel>();
+    return  Scaffold(
+      body:  BuildLoginScreenBody(authViewModel: authVm),
     );
   }
 }
