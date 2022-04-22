@@ -21,7 +21,7 @@ class TabDescription extends StatelessWidget {
     return ListView(
       children: [
         TextView(
-          title: text,
+          title: productDetailViewModel.mProductDetail[0].description,
           fontSize: kMediumFont14.sp,
         ),
         SizedBox(
@@ -38,6 +38,19 @@ class TabDescription extends StatelessWidget {
         SizedBox(
             height: 60.h,
             child: ListViewForSize(
+              productDetailViewModel: productDetailViewModel,
+            )),
+        SizedBox(
+          height: kDefaultMarginHeight * 2.h,
+        ),
+        TextView(
+          title: "Select Color",
+          fontSize: kMediumFont14.sp,
+          fontWeight: FontWeight.bold,
+        ),
+        SizedBox(
+            height: 60.h,
+            child: ListViewForColor(
               productDetailViewModel: productDetailViewModel,
             )),
       ],

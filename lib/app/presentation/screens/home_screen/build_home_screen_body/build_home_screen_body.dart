@@ -2,11 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_innovation_shop/app/core/utils/font_and_margins.dart';
 import 'package:hive_innovation_shop/app/presentation/reusable_widgets/text_view.dart';
+import 'package:hive_innovation_shop/app/view_model/home_screen_view_model.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'build_product_grid_view.dart';
 
 class BuildHomeScreenBody extends StatelessWidget {
-  const BuildHomeScreenBody({Key? key}) : super(key: key);
+  final HomeScreenViewModel homeScreenViewModel;
+
+  const BuildHomeScreenBody({Key? key, required this.homeScreenViewModel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +58,10 @@ class BuildHomeScreenBody extends StatelessWidget {
           SizedBox(
             height: kDefaultMarginHeight.h,
           ),
-          const Expanded(child: BuildProductGridView()),
+          Expanded(
+              child: BuildProductGridView(
+            homeScreenViewModel: homeScreenViewModel,
+          )),
           SizedBox(
             height: 3.h,
           ),

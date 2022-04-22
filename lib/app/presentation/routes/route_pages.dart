@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:hive_innovation_shop/app/di/auth_binding.dart';
+import 'package:hive_innovation_shop/app/di/home_screeen_binding.dart';
 import 'package:hive_innovation_shop/app/di/prouduct_detail_binding.dart';
 import 'package:hive_innovation_shop/app/di/splash_screen_binding.dart';
 import 'package:hive_innovation_shop/app/presentation/routes/route_pages_name.dart';
@@ -17,7 +18,7 @@ class RoutePages {
     GetPage(
       name: RoutePagesName.kINITIAL,
       page: () => const HomeScreen(),
-        binding: ProductDetailBinding()
+        binding: HomeScreenBinding()
     ),
     GetPage(
         name: RoutePagesName.kLogin,
