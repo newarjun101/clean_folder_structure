@@ -4,9 +4,11 @@ import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:hive_innovation_shop/app/core/utils/secure_constants.dart';
+import 'package:hive_innovation_shop/app/core/vos/cart_product_model.dart';
 import 'package:hive_innovation_shop/app/core/vos/product_model.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import '../core/persistance/cart_db.dart';
 import '../core/service/api_service.dart';
 
 class HomeScreenViewModel extends GetxController {
@@ -21,6 +23,8 @@ class HomeScreenViewModel extends GetxController {
   RxInt page = 0.obs;
   RxBool isRefresh = false.obs;
   late RxList<Content> mProductList = RxList([]);
+  RxList<CartProductModel> mCartList = RxList([]);
+  RxInt mTotalCart = 0.obs;
 
   final RefreshController refreshController =
       RefreshController(initialRefresh: false);
@@ -28,7 +32,27 @@ class HomeScreenViewModel extends GetxController {
   HomeScreenViewModel() {
     //token.value =GetStorage().read(kToken);
     _apiService = Get.put(APIService());
-    getProduct(page: page.value);
+    readFromHiveAndAddingIntoAllTicketModel();
+    print(mCartList.length);
+
+  }
+
+  @override
+  void update([List<Object>? ids, bool condition = true]) {
+    // TODO: implement update
+    readFromHiveAndAddingIntoAllTicketModel();
+  }
+
+
+  @override
+  void onInit() {
+    ever(mTotalCart, (value) {
+
+      readFromHiveAndAddingIntoAllTicketModel();
+      mCartList.refresh();
+      print("value is $mTotalCart");
+    });
+    super.onInit();
   }
 
   Future<void> getProduct({page}) async {
@@ -74,5 +98,26 @@ class HomeScreenViewModel extends GetxController {
     // await getProduct(page: page.value);
     // if failed,use refreshFailed()
     refreshController.loadComplete();
+  }
+
+  addToCart({required Content product, required int count}) {
+    // CartDb().deleteCart();
+    CartProductModel cartProductModel = CartProductModel(
+        productId: product.id,
+        productName: product.name,
+        amount: product.amount,
+        image: product.image,
+        quantity: 1,
+        lineTotal: 10);
+    CartDb().saveCart(cartProductModel);
+    readFromHiveAndAddingIntoAllTicketModel();
+  }
+
+  ///read cart data from hive database
+  readFromHiveAndAddingIntoAllTicketModel() {
+    List<CartProductModel> getAllCart = CartDb().getAllCart();
+    mCartList.value = getAllCart;
+    mCartList.refresh();
+    mTotalCart.value = mCartList.length;
   }
 }

@@ -15,14 +15,13 @@ import 'package:hive_innovation_shop/app/presentation/screens/auth_screens/login
 import 'app/core/helper/hive_helper.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-void main() async{
+void main() async {
   // runApp(const MyApp());
   await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  HiveHelper().openBoxed();
-  runApp(DevicePreview(
-      enabled: false, builder: (context) => const MyApp()));
+  await HiveHelper().openBoxed();
+  runApp(DevicePreview(enabled: false, builder: (context) => const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -31,14 +30,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
-    print(GetStorage().read(kToken));
     return ScreenUtilInit(builder: (_) {
       return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: StyleTheme().getLightTheme(),
-        initialRoute: GetStorage().read(kToken)!=null?RoutePagesName.kINITIAL : RoutePagesName.kLogin, //love for this
+        initialRoute: GetStorage().read(kToken) != null
+            ? RoutePagesName.kINITIAL
+            : RoutePagesName.kLogin,
+        //love for this
         getPages: RoutePages().routerPage,
       );
     });

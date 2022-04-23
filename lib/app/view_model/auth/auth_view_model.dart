@@ -15,11 +15,10 @@ import '../../presentation/routes/route_pages_name.dart';
 class AuthViewModel extends GetxController {
   AuthViewModel();
 
-
-
   RxBool isLoading = false.obs;
   RxBool isError = false.obs;
   RxString message = "".obs;
+  RxBool isVisible = false.obs;
   APIService apiService = APIService();
 
   Future<void> login({required username, required password, context}) async {
@@ -30,17 +29,20 @@ class AuthViewModel extends GetxController {
           url: kLoginUrl,
           param: {"username": username, "password": password},
           isHeader: true);
+
       Map loginData = jsonDecode(login);
       if (loginData["token"] != null) {
         isError.value = false;
         message.value = "success";
         GetStorage().write(kToken, loginData["token"]);
+        Get.back();
+        Get.offAndToNamed(RoutePagesName.kINITIAL);
       } else {
         debugPrint(loginData["message "]);
         isError.value = false;
         message.value = loginData["message"];
+        Get.back();
       }
-      Get.back();
 
       // Get.offAndToNamed(RoutePagesName.kINITIAL);
     } catch (e) {
@@ -51,25 +53,33 @@ class AuthViewModel extends GetxController {
     }
   }
 
+  onPasswordOnOff() {
+    isVisible.toggle();
+  }
+
   Future<void> createAccount(
       {required username, required password, context}) async {
     showLoaderDialog(context);
 
     try {
-      dynamic login = await apiService.postAPICall(
-          url: kCreateAccountUrl,
+      dynamic createAccount = await apiService.postAPICall(
+          url: kCreateAccount,
           param: {"username": username, "password": password},
           isHeader: true);
-      Map loginData = jsonDecode(login);
-      if (loginData["token"] != null) {
+
+      Map userData = jsonDecode(createAccount);
+      if (userData["token"] != null) {
         isError.value = false;
         message.value = "success";
+        GetStorage().write(kToken, userData["token"]);
+        Get.back();
+        Get.offAndToNamed(RoutePagesName.kINITIAL);
       } else {
-        debugPrint(loginData["message "]);
+        debugPrint(userData["message "]);
         isError.value = false;
-        message.value = loginData["message"];
+        message.value = userData["message"];
+        Get.back();
       }
-      Get.back();
 
       // Get.offAndToNamed(RoutePagesName.kINITIAL);
     } catch (e) {

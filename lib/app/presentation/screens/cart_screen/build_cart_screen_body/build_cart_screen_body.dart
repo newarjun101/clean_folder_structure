@@ -1,13 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:hive_innovation_shop/app/core/persistance/cart_db.dart';
 import 'package:hive_innovation_shop/app/core/utils/font_and_margins.dart';
 import 'package:hive_innovation_shop/app/presentation/reusable_widgets/custom_button.dart';
 import 'package:hive_innovation_shop/app/presentation/reusable_widgets/text_view.dart';
+import 'package:hive_innovation_shop/app/presentation/routes/route_pages_name.dart';
 import 'package:hive_innovation_shop/app/presentation/screens/cart_screen/build_cart_screen_body/cart_product_list_view.dart';
 
+import '../../../../view_model/cart_view_model.dart';
+import '../../../../view_model/home_screen_view_model.dart';
+
 class BuildCartScreenBody extends StatelessWidget {
-  const BuildCartScreenBody({Key? key}) : super(key: key);
+  final CartViewModel cartViewModel;
+
+  const BuildCartScreenBody({Key? key, required this.cartViewModel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +102,9 @@ class BuildCartScreenBody extends StatelessWidget {
             ),
             SizedBox(
               height: 0.3.sh,
-              child: const CartProductListView(),
+              child: CartProductListView(
+                cartViewModel: cartViewModel,
+              ),
             ),
             SizedBox(
               height: 6.h,
@@ -116,10 +127,12 @@ class BuildCartScreenBody extends StatelessWidget {
                 SizedBox(
                   width: 6.h,
                 ),
-                TextView(
-                  title: "20000000",
-                  fontSize: kMediumFont14.sp,
-                  fontWeight: FontWeight.bold,
+                Obx(
+                    ()=> TextView(
+                    title: cartViewModel.totalPrice.value.toString(),
+                    fontSize: kMediumFont14.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ],
             ),
@@ -134,7 +147,11 @@ class BuildCartScreenBody extends StatelessWidget {
                 radius: 10.h,
                 buttonTextColor: Theme.of(context).colorScheme.primaryContainer,
                 buttonText: 'Check Out',
-                onClick: () {},
+                onClick: () {
+                  CartDb().deleteCart();
+                  Get.find<HomeScreenViewModel>().readFromHiveAndAddingIntoAllTicketModel();
+                  Get.offAndToNamed(RoutePagesName.kSuccess);
+                },
                 fontWeight: FontWeight.bold,
               ),
             ),

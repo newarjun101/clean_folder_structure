@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:hive_innovation_shop/app/di/auth_binding.dart';
+import 'package:hive_innovation_shop/app/di/cart_binding.dart';
 import 'package:hive_innovation_shop/app/di/home_screeen_binding.dart';
 import 'package:hive_innovation_shop/app/di/prouduct_detail_binding.dart';
 import 'package:hive_innovation_shop/app/di/splash_screen_binding.dart';
@@ -10,35 +10,39 @@ import 'package:hive_innovation_shop/app/presentation/screens/checkout_success_s
 import 'package:hive_innovation_shop/app/presentation/screens/home_screen/home_screen.dart';
 import 'package:hive_innovation_shop/app/presentation/screens/product_detail_screen/product_detail_screen.dart';
 import 'package:hive_innovation_shop/app/presentation/screens/splash_screen/splash_screen.dart';
-import 'package:hive_innovation_shop/app/view_model/product_detail_view_model.dart';
-import 'package:hive_innovation_shop/app/view_model/splash_screen_view_model.dart';
+
+
+import '../screens/auth_screens/register_screen/register_screen.dart';
 
 class RoutePages {
   var routerPage = [
     GetPage(
-      name: RoutePagesName.kINITIAL,
-      page: () => const HomeScreen(),
-        binding: HomeScreenBinding()
-    ),
+        name: RoutePagesName.kINITIAL,
+        page: () => const HomeScreen(),
+        binding: HomeScreenBinding()),
     GetPage(
         name: RoutePagesName.kLogin,
         page: () => const LoginScreen(),
-      binding: AuthBinding()
-
+      ),
+    GetPage(
+        name: RoutePagesName.kCreateAccount,
+        page: () => const CreateAccountScreen(),
         ),
     GetPage(
         name: RoutePagesName.kProductDetail,
         page: () => const ProductDetailScreen(),
         binding: ProductDetailBinding()),
     GetPage(
-      name: RoutePagesName.kCart,
-      page: () => const CartScreen(),
-    ),
+        name: RoutePagesName.kCart,
+        page: () => const CartScreen(),
+        binding: CartBinding()),
     GetPage(
       name: RoutePagesName.kSuccess,
       page: () => const CheckoutSuccessScreen(),
     ),
-    GetPage(name: RoutePagesName.kSplash, page: ()=>const SplashScreen(),
-    binding: SplashScreenBinding())
+    GetPage(
+        name: RoutePagesName.kSplash,
+        page: () => const SplashScreen(),
+        binding: SplashScreenBinding())
   ];
 }

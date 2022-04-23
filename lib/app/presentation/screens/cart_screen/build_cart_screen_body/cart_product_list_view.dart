@@ -4,26 +4,32 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_innovation_shop/app/core/utils/font_and_margins.dart';
 import 'package:hive_innovation_shop/app/presentation/reusable_widgets/custom_container.dart';
 
+import '../../../../view_model/cart_view_model.dart';
 import '../../../reusable_widgets/text_view.dart';
 
 class CartProductListView extends StatelessWidget {
-  const CartProductListView({Key? key}) : super(key: key);
+  final CartViewModel cartViewModel;
+
+  const CartProductListView({Key? key, required this.cartViewModel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    print(cartViewModel.mCartList.length);
     return ListView.builder(
-        itemCount: 10,
+        itemCount: cartViewModel.mCartList.length,
         itemBuilder: (_, position) {
-          return Padding(
+          return Container(
+            width: double.infinity,
             padding: EdgeInsets.symmetric(
                 horizontal: kDefaultMarginWidth.w,
                 vertical: kDefaultMarginHeight.h),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
               children: [
                 CachedNetworkImage(
-                  imageUrl:
-                      "https://cdn.pixabay.com/photo/2016/09/02/11/10/boots-1638873_960_720.jpg",
+                  imageUrl: cartViewModel.mCartList[position].image,
                   imageBuilder: (context, imageProvider) => Container(
                     width: 80.h,
                     height: 80.h,
@@ -43,13 +49,14 @@ class CartProductListView extends StatelessWidget {
                 SizedBox(
                   width: 6.w,
                 ),
-                Flexible(
+                Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TextView(
-                        title: "Product Code : 122477",
+                        title:
+                            "Product Code : ${cartViewModel.mCartList[position].productId}",
                         fontSize: kSmallFont12.sp,
                         textColor: Theme.of(context).hintColor,
                       ),
@@ -57,7 +64,7 @@ class CartProductListView extends StatelessWidget {
                         width: 6.h,
                       ),
                       TextView(
-                        title: "1 X Adidas Originals Trefoil overhead ",
+                        title: cartViewModel.mCartList[position].productName,
                         fontSize: kLargeFont16.sp,
                       ),
                     ],
@@ -66,11 +73,9 @@ class CartProductListView extends StatelessWidget {
                 SizedBox(
                   width: 6.w,
                 ),
-                Center(
-                  child: TextView(
-                    title: "2000",
-                    fontSize: kLargeFont16.sp,
-                  ),
+                TextView(
+                  title: cartViewModel.mCartList[position].amount.toString(),
+                  fontSize: kLargeFont16.sp,
                 ),
               ],
             ),

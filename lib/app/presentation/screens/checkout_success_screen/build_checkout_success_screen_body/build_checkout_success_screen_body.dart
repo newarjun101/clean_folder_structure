@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../../core/utils/font_and_margins.dart';
@@ -75,7 +76,7 @@ class BuildCheckoutSuccessScreenBody extends StatelessWidget {
               radius: 4.h,
               buttonTextColor: Theme.of(context).colorScheme.primaryContainer,
               buttonText: 'Check Out',
-              onClick: () {},
+              onClick: () =>Get.back(),
             ),
           ),
         ],

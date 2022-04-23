@@ -46,7 +46,7 @@ class ProductDetailScreen extends StatelessWidget {
                 width: 0.5.sw,
                 child: CustomButton(
                   buttonText: "Add To Cart",
-                  onClick: () => print("Hello World"),
+                  onClick: () => productDetailVM.addToCart(product: argument, count: 1),
                   buttonTextColor:
                       Theme.of(context).colorScheme.primaryContainer,
                   buttonColor: Theme.of(context).primaryColor,

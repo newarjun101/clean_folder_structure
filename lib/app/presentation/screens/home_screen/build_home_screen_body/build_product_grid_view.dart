@@ -101,7 +101,11 @@ class BuildProductGridView extends StatelessWidget {
                             width: 4.w,
                           ),
                           InkWell(
-                            onTap: () => print("hello World"),
+                            onTap: () {
+                              int count=1;
+                              homeScreenViewModel
+                                  .addToCart(product: homeScreenViewModel.mProductList[position], count: count++);
+                              },
                             child: CustomContainer(
                               height: 30.h,
                               width: 30.h,
