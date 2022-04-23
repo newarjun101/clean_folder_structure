@@ -19,8 +19,9 @@ class CartProductModelAdapter extends TypeAdapter<CartProductModel> {
     return CartProductModel(
       productId: fields[0] as int,
       productName: fields[2] as String,
-      amount: fields[3] as int,
+      amount: fields[3] as dynamic,
       quantity: fields[4] as int,
+      image: fields[6] as String,
       lineTotal: fields[5] as int,
     );
   }
@@ -28,7 +29,7 @@ class CartProductModelAdapter extends TypeAdapter<CartProductModel> {
   @override
   void write(BinaryWriter writer, CartProductModel obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.productId)
       ..writeByte(2)
@@ -38,7 +39,9 @@ class CartProductModelAdapter extends TypeAdapter<CartProductModel> {
       ..writeByte(4)
       ..write(obj.quantity)
       ..writeByte(5)
-      ..write(obj.lineTotal);
+      ..write(obj.lineTotal)
+      ..writeByte(6)
+      ..write(obj.image);
   }
 
   @override

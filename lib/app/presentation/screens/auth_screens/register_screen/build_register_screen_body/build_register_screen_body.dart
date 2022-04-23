@@ -5,15 +5,15 @@ import 'package:hive_innovation_shop/app/core/utils/font_and_margins.dart';
 import 'package:hive_innovation_shop/app/presentation/reusable_widgets/custom_button.dart';
 import 'package:hive_innovation_shop/app/presentation/reusable_widgets/custom_text_form_field.dart';
 import 'package:hive_innovation_shop/app/presentation/reusable_widgets/text_view.dart';
+import 'package:hive_innovation_shop/app/presentation/routes/route_pages_name.dart';
 import 'package:hive_innovation_shop/app/view_model/auth/auth_view_model.dart';
 
 import '../../../../../core/exceptions/form_validation.dart';
-import '../../../../routes/route_pages_name.dart';
 
-class BuildLoginScreenBody extends StatelessWidget {
+class BuildRegisterScreenBody extends StatelessWidget {
   final AuthViewModel authViewModel;
 
-  const BuildLoginScreenBody({Key? key, required this.authViewModel})
+  const BuildRegisterScreenBody({Key? key, required this.authViewModel})
       : super(key: key);
 
   @override
@@ -97,10 +97,10 @@ class BuildLoginScreenBody extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: CustomButton(
-                buttonText: "Login",
+                buttonText: "Create Account",
                 onClick: () {
                   if (_key.currentState!.validate()) {
-                    authViewModel.login(
+                    authViewModel.createAccount(
                         password: passwordTextController.text,
                         username: emailTextController.text,
                         context: context);
@@ -111,15 +111,17 @@ class BuildLoginScreenBody extends StatelessWidget {
                 radius: 8.h,
               ),
             ),
+
             SizedBox(
               height: 32.h,
             ),
             GestureDetector(
-              onTap: ()=> Get.offAndToNamed(RoutePagesName.kCreateAccount),
+              onTap: ()=> Get.offAndToNamed(RoutePagesName.kLogin),
               child: Center(
-                  child: TextView(fontSize: kLargeFont16.sp, title: 'Login Account',textDecoration: TextDecoration.underline,textColor: Colors.blue,)
+                child: TextView(fontSize: kLargeFont16.sp, title: 'Login Account',textDecoration: TextDecoration.underline,textColor: Colors.blue,)
               ),
             ),
+
           ],
         ),
       ),

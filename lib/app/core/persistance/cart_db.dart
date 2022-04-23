@@ -6,7 +6,6 @@ import 'package:hive_innovation_shop/app/core/vos/cart_product_model.dart';
 
 import '../utils/hive_constants.dart';
 
-
 class CartDb {
   static final CartDb _singleton = CartDb._internal();
 
@@ -18,7 +17,7 @@ class CartDb {
 
   Future saveCart(CartProductModel cartVo) async {
     return getCartBox()
-    //  ..deleteAll(getCartBox().keys)
+      //  ..deleteAll(getCartBox().keys)
       ..add(cartVo);
   }
 
@@ -30,6 +29,21 @@ class CartDb {
 
   Future deleteCart() {
     return getCartBox().deleteAll(getCartBox().keys);
+  }
+
+  Future update(CartProductModel cartVo,int quality) async {
+    List<CartProductModel> mCart = getAllCart();
+
+    for (CartProductModel cart in mCart) {
+      if (cart.productId == cartVo.productId) {
+        cart.quantity = quality;
+        saveCart(cart);
+      }
+
+    }
+    return getCartBox()
+      //  ..deleteAll(getCartBox().keys)
+      ..add(cartVo);
   }
 
   Box<CartProductModel> getCartBox() {

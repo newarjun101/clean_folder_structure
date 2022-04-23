@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:hive_innovation_shop/app/core/utils/font_and_margins.dart';
 import 'package:hive_innovation_shop/app/presentation/reusable_widgets/custom_container.dart';
 import 'package:hive_innovation_shop/app/presentation/reusable_widgets/text_view.dart';
@@ -38,22 +39,30 @@ class BuildTitleAndButton extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(
-                    Icons.remove,
-                    size: 18.sp,
-                    color: Theme.of(context).colorScheme.primaryContainer,
+                  GestureDetector(
+                    onTap: ()=> productDetailVM.decrement(),
+                    child: Icon(
+                      Icons.remove,
+                      size: 18.sp,
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                    ),
                   ),
-                  TextView(
-                    title: "1",
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.bold,
-                    maxLine: 1,
-                    textColor: Theme.of(context).colorScheme.primaryContainer,
+                  Obx(
+                    ()=> TextView(
+                      title: productDetailVM.counter.toString(),
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.bold,
+                      maxLine: 1,
+                      textColor: Theme.of(context).colorScheme.primaryContainer,
+                    ),
                   ),
-                  Icon(
-                    Icons.add,
-                    size: 18.sp,
-                    color: Theme.of(context).colorScheme.primaryContainer,
+                  GestureDetector(
+                    onTap: ()=> productDetailVM.increment(),
+                    child: Icon(
+                      Icons.add,
+                      size: 18.sp,
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                    ),
                   )
                 ],
               ),

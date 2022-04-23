@@ -6,6 +6,7 @@ class TextView extends StatelessWidget {
   final Color? textColor;
   final FontWeight? fontWeight;
   final int? maxLine;
+  final TextDecoration? textDecoration;
   final TextAlign? textAlign;
 
   const TextView(
@@ -15,18 +16,21 @@ class TextView extends StatelessWidget {
       this.fontWeight,
       this.maxLine,
       this.textAlign,
-      this.textColor})
+      this.textColor, this.textDecoration})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Text(
       title,
+
       style: TextStyle(
           color: textColor ?? Theme.of(context).textTheme.bodyText2!.color!,
           fontWeight: fontWeight,
+          decoration: textDecoration,
           fontSize: fontSize),
       textAlign: textAlign,
+
       maxLines: maxLine,
     );
   }

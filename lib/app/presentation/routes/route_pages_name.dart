@@ -6,4 +6,5 @@ class RoutePagesName {
   static String kSuccess = "/success";
   static String kSplash = "/splash";
   static String kLogin = "/login";
+  static String kCreateAccount = "/create-account";
 }

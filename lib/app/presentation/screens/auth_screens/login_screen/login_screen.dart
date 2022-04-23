@@ -9,9 +9,9 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authVm = Get.find<AuthViewModel>();
+    final authVm =  Get.put(AuthViewModel());
     return  Scaffold(
-      body:  BuildLoginScreenBody(authViewModel: authVm),
+      body:  SingleChildScrollView(child: BuildLoginScreenBody(authViewModel: authVm)),
     );
   }
 }
