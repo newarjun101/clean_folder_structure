@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_innovation_shop/app/core/utils/font_and_margins.dart';
 import 'package:hive_innovation_shop/app/presentation/reusable_widgets/text_view.dart';
 import 'package:hive_innovation_shop/app/view_model/product_detail_view_model.dart';
-
 import 'list_view_for_color.dart';
 import 'list_view_for_size.dart';
 

@@ -1,1 +1,1 @@
-enum ApiStatus {eComplete,eError}
+enum ApiStatus { eComplete, eError }

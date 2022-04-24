@@ -40,8 +40,10 @@ class CustomTextFormField extends StatelessWidget {
           suffixIcon: GestureDetector(
             onTap: suffixIconClick,
             child: Icon(
-               suffixIcon,
-              color:visible??false? Colors.grey : Theme.of(context).primaryColor,
+              suffixIcon,
+              color: visible ?? false
+                  ? Colors.grey
+                  : Theme.of(context).primaryColor,
               size: 24.sp,
             ),
           ),

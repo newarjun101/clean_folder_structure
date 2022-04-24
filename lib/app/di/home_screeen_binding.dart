@@ -7,6 +7,4 @@ class HomeScreenBinding extends Bindings {
     // TODO: implement dependencies
     Get.lazyPut(() => HomeScreenViewModel());
   }
-
-
 }

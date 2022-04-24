@@ -76,7 +76,7 @@ class BuildCheckoutSuccessScreenBody extends StatelessWidget {
               radius: 4.h,
               buttonTextColor: Theme.of(context).colorScheme.primaryContainer,
               buttonText: 'Check Out',
-              onClick: () =>Get.back(),
+              onClick: () => Get.back(),
             ),
           ),
         ],

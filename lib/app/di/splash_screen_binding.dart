@@ -8,6 +8,4 @@ class SplashScreenBinding extends Bindings {
 
     Get.lazyPut(() => SplashScreenViewModel());
   }
-
-
 }

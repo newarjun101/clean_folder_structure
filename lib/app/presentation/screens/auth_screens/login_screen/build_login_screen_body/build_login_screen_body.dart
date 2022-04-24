@@ -115,10 +115,14 @@ class BuildLoginScreenBody extends StatelessWidget {
               height: 32.h,
             ),
             GestureDetector(
-              onTap: ()=> Get.offAndToNamed(RoutePagesName.kCreateAccount),
+              onTap: () => Get.offAndToNamed(RoutePagesName.kCreateAccount),
               child: Center(
-                  child: TextView(fontSize: kLargeFont16.sp, title: 'Create Account Account',textDecoration: TextDecoration.underline,textColor: Colors.blue,)
-              ),
+                  child: TextView(
+                fontSize: kLargeFont16.sp,
+                title: 'Create Account Account',
+                textDecoration: TextDecoration.underline,
+                textColor: Colors.blue,
+              )),
             ),
           ],
         ),

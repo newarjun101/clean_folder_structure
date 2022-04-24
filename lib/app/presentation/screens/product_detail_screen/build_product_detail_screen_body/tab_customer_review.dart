@@ -8,6 +8,10 @@ class TabCustomerReview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: TextView(title: "Review Coming Soon", fontSize: kMediumFont14.sp,));
+    return Center(
+        child: TextView(
+      title: "Review Coming Soon",
+      fontSize: kMediumFont14.sp,
+    ));
   }
 }

@@ -111,17 +111,19 @@ class BuildRegisterScreenBody extends StatelessWidget {
                 radius: 8.h,
               ),
             ),
-
             SizedBox(
               height: 32.h,
             ),
             GestureDetector(
-              onTap: ()=> Get.offAndToNamed(RoutePagesName.kLogin),
+              onTap: () => Get.offAndToNamed(RoutePagesName.kLogin),
               child: Center(
-                child: TextView(fontSize: kLargeFont16.sp, title: 'Login Account',textDecoration: TextDecoration.underline,textColor: Colors.blue,)
-              ),
+                  child: TextView(
+                fontSize: kLargeFont16.sp,
+                title: 'Login Account',
+                textDecoration: TextDecoration.underline,
+                textColor: Colors.blue,
+              )),
             ),
-
           ],
         ),
       ),

@@ -15,7 +15,6 @@ class CartProductListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(cartViewModel.mCartList.length);
     return ListView.builder(
         itemCount: cartViewModel.mCartList.length,
         itemBuilder: (_, position) {

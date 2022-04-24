@@ -10,12 +10,12 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final cartViewModel = Get.find<CartViewModel>();
-    return  Scaffold(
-
-      appBar: const SimpleAppBarWithBackArrow(title: "Cart",),
-      body:  BuildCartScreenBody(cartViewModel: cartViewModel),
+    return Scaffold(
+      appBar: const SimpleAppBarWithBackArrow(
+        title: "Cart",
+      ),
+      body: BuildCartScreenBody(cartViewModel: cartViewModel),
     );
   }
 }
