@@ -18,7 +18,7 @@ class AuthViewModel extends GetxController {
   RxBool isLoading = false.obs;
   RxBool isError = false.obs;
   RxString message = "".obs;
-  RxBool isVisible = false.obs;
+  RxBool isVisible = true.obs;
   APIService apiService = APIService();
 
   Future<void> login({required username, required password, context}) async {

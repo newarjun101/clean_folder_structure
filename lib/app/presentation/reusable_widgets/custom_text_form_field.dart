@@ -41,7 +41,7 @@ class CustomTextFormField extends StatelessWidget {
             onTap: suffixIconClick,
             child: Icon(
                suffixIcon,
-              color:visible??false? Theme.of(context).primaryColor : Colors.grey,
+              color:visible??false? Colors.grey : Theme.of(context).primaryColor,
               size: 24.sp,
             ),
           ),

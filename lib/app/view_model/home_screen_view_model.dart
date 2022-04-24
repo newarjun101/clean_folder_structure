@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:hive_innovation_shop/app/core/utils/secure_constants.dart';
@@ -10,6 +11,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../core/persistance/cart_db.dart';
 import '../core/service/api_service.dart';
+import '../presentation/routes/route_pages_name.dart';
 
 class HomeScreenViewModel extends GetxController {
   late RxString token;
@@ -33,8 +35,7 @@ class HomeScreenViewModel extends GetxController {
     //token.value =GetStorage().read(kToken);
     _apiService = Get.put(APIService());
     readFromHiveAndAddingIntoAllTicketModel();
-    print(mCartList.length);
-
+    ;
   }
 
   @override
@@ -43,11 +44,9 @@ class HomeScreenViewModel extends GetxController {
     readFromHiveAndAddingIntoAllTicketModel();
   }
 
-
   @override
   void onInit() {
     ever(mTotalCart, (value) {
-
       readFromHiveAndAddingIntoAllTicketModel();
       mCartList.refresh();
       print("value is $mTotalCart");
@@ -85,6 +84,7 @@ class HomeScreenViewModel extends GetxController {
       message.value = e.toString();
       debugPrint(e.toString());
     }
+    refreshController.refreshCompleted();
   }
 
   void onLoad() async {
@@ -94,30 +94,51 @@ class HomeScreenViewModel extends GetxController {
     if (totalPage.value >= page.value) {
       getProduct(page: page.value);
       debugPrint("auto load");
+    } else {
+      refreshController.loadComplete();
     }
     // await getProduct(page: page.value);
     // if failed,use refreshFailed()
-    refreshController.loadComplete();
   }
 
+  ///add to cart when the add button is clicked
+
   addToCart({required Content product, required int count}) {
-    // CartDb().deleteCart();
-    CartProductModel cartProductModel = CartProductModel(
+    readFromHiveAndAddingIntoAllTicketModel();
+    CartProductModel cartProductModel;
+
+    cartProductModel = CartProductModel(
         productId: product.id,
         productName: product.name,
         amount: product.amount,
         image: product.image,
         quantity: 1,
         lineTotal: 10);
+
     CartDb().saveCart(cartProductModel);
+
+    // CartDb().deleteCart();
+
     readFromHiveAndAddingIntoAllTicketModel();
   }
 
   ///read cart data from hive database
   readFromHiveAndAddingIntoAllTicketModel() {
     List<CartProductModel> getAllCart = CartDb().getAllCart();
+    mCartList.clear();
     mCartList.value = getAllCart;
-    mCartList.refresh();
     mTotalCart.value = mCartList.length;
+  }
+
+  ///to route add to cart page if cart item available
+  routeToCartScreen() {
+    if (mCartList.isNotEmpty) {
+      Get.toNamed(RoutePagesName.kCart);
+    } else {
+      Get.snackbar("You Don't have any cart items yet", "Please Add to Cart",
+          //    icon: Icon(Icons.person, color: Colors.white),
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.grey.withOpacity(0.6));
+    }
   }
 }

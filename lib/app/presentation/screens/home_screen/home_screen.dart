@@ -22,14 +22,25 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBarWithCartIcon(
         title: 'Home',
         leadingIcon: "assets/images/drawer_icon.svg",
-        onClick: () => Get.toNamed(RoutePagesName.kCart),
+        onClick: () => homeViewModel.routeToCartScreen(),
         count: homeViewModel.mTotalCart,
-      ),
+       ),
       body: SmartRefresher(
-          enablePullDown: false,
+          enablePullDown: true,
           enablePullUp: true,
           controller: homeViewModel.refreshController,
+          onRefresh:()=> homeViewModel.getProduct(page: homeViewModel.page.value),
           onLoading: homeViewModel.onLoad,
+    /*      footer: CustomFooter(
+            builder: (_,mode) {
+
+              return mode == LoadStatus.idle? const Text("initial state") :
+              mode == LoadStatus.loading ? const Center(child: CircularProgressIndicator()) :
+              mode == LoadStatus.failed? TextView(title: "Load Fail", fontSize: kMediumFont14.sp) :
+              mode == LoadStatus.canLoading? Center(child: TextView(title: "Load Data", fontSize: kMediumFont14.sp)):
+              TextView(title: "No More Data", fontSize: kMediumFont14.sp);
+            }
+          ),*/
           child: Obx(() => homeViewModel.isLoading.isTrue
               ? const Center(
                   child: CircularProgressIndicator(),

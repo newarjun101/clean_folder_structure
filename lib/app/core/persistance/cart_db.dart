@@ -17,8 +17,14 @@ class CartDb {
 
   Future saveCart(CartProductModel cartVo) async {
     return getCartBox()
-      //  ..deleteAll(getCartBox().keys)
+       // ..deleteAll(getCartBox().keys)
       ..add(cartVo);
+  }
+
+  Future updateCart(CartProductModel cartVo, index) async {
+    return getCartBox()
+      //  ..deleteAll(getCartBox().keys)
+      ..putAt(index, cartVo);
   }
 
   List<CartProductModel> getAllCart() {
@@ -29,21 +35,6 @@ class CartDb {
 
   Future deleteCart() {
     return getCartBox().deleteAll(getCartBox().keys);
-  }
-
-  Future update(CartProductModel cartVo,int quality) async {
-    List<CartProductModel> mCart = getAllCart();
-
-    for (CartProductModel cart in mCart) {
-      if (cart.productId == cartVo.productId) {
-        cart.quantity = quality;
-        saveCart(cart);
-      }
-
-    }
-    return getCartBox()
-      //  ..deleteAll(getCartBox().keys)
-      ..add(cartVo);
   }
 
   Box<CartProductModel> getCartBox() {
