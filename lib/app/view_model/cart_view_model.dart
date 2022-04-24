@@ -59,7 +59,8 @@ class CartViewModel extends GetxController {
         debugPrint("success");
         Get.back();
         CartDb().deleteCart();
-        Get.find<HomeScreenViewModel>().readFromHiveAndAddingIntoAllTicketModel();
+        Get.find<HomeScreenViewModel>()
+            .readFromHiveAndAddingIntoAllTicketModel();
         Get.offAndToNamed(RoutePagesName.kSuccess);
         Get.snackbar("Success", "Order Successful",
 

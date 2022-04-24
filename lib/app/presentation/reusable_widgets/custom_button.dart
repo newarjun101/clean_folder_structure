@@ -21,7 +21,8 @@ class CustomButton extends StatelessWidget {
       required this.buttonColor,
       this.fontSize,
       this.buttonHeight,
-      this.fontWeight, this.radius})
+      this.fontWeight,
+      this.radius})
       : super(key: key);
 
   @override
@@ -29,7 +30,7 @@ class CustomButton extends StatelessWidget {
     return MaterialButton(
       height: buttonHeight ?? 0.056.sh,
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(radius??kMediumFont14.sw)),
+          borderRadius: BorderRadius.circular(radius ?? kMediumFont14.sw)),
       color: buttonColor,
       onPressed: onClick,
       child: TextView(

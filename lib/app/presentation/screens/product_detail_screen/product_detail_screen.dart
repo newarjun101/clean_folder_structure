@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:hive_innovation_shop/app/core/utils/font_and_margins.dart';
 import 'package:hive_innovation_shop/app/presentation/reusable_widgets/custom_button.dart';
 import 'package:hive_innovation_shop/app/presentation/reusable_widgets/custom_container.dart';
-import 'package:hive_innovation_shop/app/presentation/reusable_widgets/simple_app_bar_with_back_arrow.dart';
 import 'package:hive_innovation_shop/app/presentation/reusable_widgets/text_view.dart';
 import 'package:hive_innovation_shop/app/view_model/product_detail_view_model.dart';
 
@@ -17,7 +16,6 @@ class ProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var argument = Get.arguments;
-    print(argument);
     final productDetailVM = Get.find<ProductDetailViewModel>();
     productDetailVM.getProductDetail(product: argument);
     return Scaffold(
@@ -46,7 +44,8 @@ class ProductDetailScreen extends StatelessWidget {
                 width: 0.5.sw,
                 child: CustomButton(
                   buttonText: "Add To Cart",
-                  onClick: () => productDetailVM.addToCart(product: argument, count: 1),
+                  onClick: () =>
+                      productDetailVM.addToCart(product: argument, count: 1),
                   buttonTextColor:
                       Theme.of(context).colorScheme.primaryContainer,
                   buttonColor: Theme.of(context).primaryColor,

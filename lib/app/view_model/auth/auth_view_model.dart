@@ -1,10 +1,7 @@
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
-
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:hive_innovation_shop/app/core/helper/auth_helper.dart';
 import 'package:hive_innovation_shop/app/core/service/api_service.dart';
 import 'package:hive_innovation_shop/app/core/utils/api_constants.dart';
 import 'package:hive_innovation_shop/app/core/utils/secure_constants.dart';

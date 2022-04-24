@@ -11,7 +11,6 @@ import 'package:hive_innovation_shop/app/presentation/screens/home_screen/home_s
 import 'package:hive_innovation_shop/app/presentation/screens/product_detail_screen/product_detail_screen.dart';
 import 'package:hive_innovation_shop/app/presentation/screens/splash_screen/splash_screen.dart';
 
-
 import '../screens/auth_screens/register_screen/register_screen.dart';
 
 class RoutePages {
@@ -21,13 +20,13 @@ class RoutePages {
         page: () => const HomeScreen(),
         binding: HomeScreenBinding()),
     GetPage(
-        name: RoutePagesName.kLogin,
-        page: () => const LoginScreen(),
-      ),
+      name: RoutePagesName.kLogin,
+      page: () => const LoginScreen(),
+    ),
     GetPage(
-        name: RoutePagesName.kCreateAccount,
-        page: () => const CreateAccountScreen(),
-        ),
+      name: RoutePagesName.kCreateAccount,
+      page: () => const CreateAccountScreen(),
+    ),
     GetPage(
         name: RoutePagesName.kProductDetail,
         page: () => const ProductDetailScreen(),

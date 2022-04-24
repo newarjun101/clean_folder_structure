@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:hive_innovation_shop/app/core/utils/font_and_margins.dart';
 import 'package:hive_innovation_shop/app/presentation/reusable_widgets/app_bar_with_cart_icon.dart';
 import 'package:hive_innovation_shop/app/presentation/reusable_widgets/text_view.dart';
-import 'package:hive_innovation_shop/app/presentation/routes/route_pages_name.dart';
 import 'package:hive_innovation_shop/app/view_model/home_screen_view_model.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -23,15 +22,18 @@ class HomeScreen extends StatelessWidget {
         title: 'Home',
         leadingIcon: "assets/images/drawer_icon.svg",
         onClick: () => homeViewModel.routeToCartScreen(),
-        count: homeViewModel.mTotalCart, logout: ()=>homeViewModel.onLogoutClick(), onDrawerClick: ()=> homeViewModel.onDrawerIconClick(),
-       ),
+        count: homeViewModel.mTotalCart,
+        logout: () => homeViewModel.onLogoutClick(),
+        onDrawerClick: () => homeViewModel.onDrawerIconClick(),
+      ),
       body: SmartRefresher(
           enablePullDown: true,
           enablePullUp: true,
           controller: homeViewModel.refreshController,
-          onRefresh:()=> homeViewModel.getProduct(page: homeViewModel.page.value),
+          onRefresh: () =>
+              homeViewModel.getProduct(page: homeViewModel.page.value),
           onLoading: homeViewModel.onLoad,
-    /*      footer: CustomFooter(
+          /*      footer: CustomFooter(
             builder: (_,mode) {
 
               return mode == LoadStatus.idle? const Text("initial state") :

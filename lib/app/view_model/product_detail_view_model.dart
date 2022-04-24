@@ -30,7 +30,6 @@ class ProductDetailViewModel extends GetxController {
     colorSelectedIndex.value = index;
   }
 
-
   increment() {
     counter.value++;
   }
@@ -57,8 +56,7 @@ class ProductDetailViewModel extends GetxController {
         lineTotal: 10);
     CartDb().saveCart(cartProductModel);
     Get.find<HomeScreenViewModel>().readFromHiveAndAddingIntoAllTicketModel();
-    Get.snackbar("New Data Added",
-        "Thank you for choosing this product",
+    Get.snackbar("New Data Added", "Thank you for choosing this product",
         //    icon: Icon(Icons.person, color: Colors.white),
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.grey.withOpacity(0.6));
@@ -70,7 +68,6 @@ class ProductDetailViewModel extends GetxController {
     mCartList.value = getAllCart;
     mTotalCart.value = mCartList.length;
   }
-
 
   ///post checkout data to server
 

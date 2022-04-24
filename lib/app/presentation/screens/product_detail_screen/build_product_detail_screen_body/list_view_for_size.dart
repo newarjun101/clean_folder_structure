@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hive_innovation_shop/app/view_model/product_detail_view_model.dart';
-
 import '../../../../core/utils/font_and_margins.dart';
 import '../../../reusable_widgets/custom_container.dart';
 import '../../../reusable_widgets/text_view.dart';

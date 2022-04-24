@@ -7,5 +7,4 @@ class ProductDetailBinding extends Bindings {
     // TODO: implement dependencies
     Get.lazyPut(() => ProductDetailViewModel());
   }
-
 }

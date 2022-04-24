@@ -3,14 +3,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_innovation_shop/app/presentation/screens/product_detail_screen/build_product_detail_screen_body/tab_customer_review.dart';
 import 'package:hive_innovation_shop/app/presentation/screens/product_detail_screen/build_product_detail_screen_body/tab_description.dart';
 import 'package:hive_innovation_shop/app/view_model/product_detail_view_model.dart';
-
 import '../../../../core/utils/font_and_margins.dart';
 
 class ProductDetailTabView extends StatelessWidget {
   // final WalletViewModel walletViewModel;
-final ProductDetailViewModel productDetailViewModel;
+  final ProductDetailViewModel productDetailViewModel;
+
   const ProductDetailTabView({
-    Key? key,required this.productDetailViewModel,
+    Key? key,
+    required this.productDetailViewModel,
   }) : super(key: key);
 
   @override
@@ -35,21 +36,21 @@ final ProductDetailViewModel productDetailViewModel;
             indicatorColor: Theme.of(context).primaryColor,
             tabs: [
               SizedBox(
-                  width: 60.w,
-                  height: 30.h,
-                  child: const Tab(text: "Detail")),
+                  width: 60.w, height: 30.h, child: const Tab(text: "Detail")),
               SizedBox(
-                  width: 60.w,
-                  height: 30.h,
-                  child: const Tab(text: "Reviews")),
+                  width: 60.w, height: 30.h, child: const Tab(text: "Reviews")),
             ],
           ),
           Expanded(
             child: Padding(
-              padding:
-                  EdgeInsets.symmetric(horizontal: kDefaultMarginWidth.w),
-              child:  TabBarView(
-                children: [TabDescription(productDetailViewModel: productDetailViewModel,),const TabCustomerReview()],
+              padding: EdgeInsets.symmetric(horizontal: kDefaultMarginWidth.w),
+              child: TabBarView(
+                children: [
+                  TabDescription(
+                    productDetailViewModel: productDetailViewModel,
+                  ),
+                  const TabCustomerReview()
+                ],
               ),
             ),
           )

@@ -26,7 +26,7 @@ class CartProductModel {
   @HiveField(3)
   final dynamic amount;
   @HiveField(4)
-   int quantity;
+  int quantity;
   @HiveField(5)
   final int lineTotal;
   @HiveField(6)

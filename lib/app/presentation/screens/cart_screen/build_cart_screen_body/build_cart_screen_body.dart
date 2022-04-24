@@ -128,7 +128,7 @@ class BuildCartScreenBody extends StatelessWidget {
                   width: 6.h,
                 ),
                 Obx(
-                    ()=> TextView(
+                  () => TextView(
                     title: cartViewModel.totalPrice.value.toString(),
                     fontSize: kMediumFont14.sp,
                     fontWeight: FontWeight.bold,
@@ -148,10 +148,9 @@ class BuildCartScreenBody extends StatelessWidget {
                 buttonTextColor: Theme.of(context).colorScheme.primaryContainer,
                 buttonText: 'Check Out',
                 onClick: () {
-
                   cartViewModel.onCheckout(context: context);
-                //  Get.find<HomeScreenViewModel>().readFromHiveAndAddingIntoAllTicketModel();
-                 // Get.offAndToNamed(RoutePagesName.kSuccess);
+                  //  Get.find<HomeScreenViewModel>().readFromHiveAndAddingIntoAllTicketModel();
+                  // Get.offAndToNamed(RoutePagesName.kSuccess);
                 },
                 fontWeight: FontWeight.bold,
               ),

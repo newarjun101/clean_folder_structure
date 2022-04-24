@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import '../utils/color_constatns.dart';
 
-
-
 class StyleTheme {
   ThemeData getLightTheme() {
     return ThemeData(
@@ -12,11 +10,11 @@ class StyleTheme {
         backgroundColor: Colors.white,
         appBarTheme: const AppBarTheme(color: primaryColor),
         inputDecorationTheme:
-        const InputDecorationTheme(fillColor: Color(0xffE5E5E5)),
+            const InputDecorationTheme(fillColor: Color(0xffE5E5E5)),
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          //  secondary: primaryColor,
+            //  secondary: primaryColor,
             secondaryContainer: secondaryContainer,
-            onPrimary: onPrimary  ,
+            onPrimary: onPrimary,
             primaryContainer: primaryContainer),
         textTheme: const TextTheme(
           labelMedium: TextStyle(color: Color(0xff5A596A)),

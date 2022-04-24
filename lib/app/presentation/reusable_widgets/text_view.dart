@@ -16,21 +16,20 @@ class TextView extends StatelessWidget {
       this.fontWeight,
       this.maxLine,
       this.textAlign,
-      this.textColor, this.textDecoration})
+      this.textColor,
+      this.textDecoration})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Text(
       title,
-
       style: TextStyle(
           color: textColor ?? Theme.of(context).textTheme.bodyText2!.color!,
           fontWeight: fontWeight,
           decoration: textDecoration,
           fontSize: fontSize),
       textAlign: textAlign,
-
       maxLines: maxLine,
     );
   }

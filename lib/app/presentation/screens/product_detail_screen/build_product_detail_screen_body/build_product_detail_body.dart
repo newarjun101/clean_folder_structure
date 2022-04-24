@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:hive_innovation_shop/app/core/utils/font_and_margins.dart';
 import 'package:hive_innovation_shop/app/presentation/screens/product_detail_screen/build_product_detail_screen_body/product_detail_tab_view.dart';
 import 'package:hive_innovation_shop/app/view_model/product_detail_view_model.dart';
-
 import 'build_title_and_button.dart';
 
 class BuildProductDetailBody extends StatelessWidget {

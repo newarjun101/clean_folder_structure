@@ -7,14 +7,14 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('assets/images/shoes.png',),
-                  fit: BoxFit.contain
-              )
-          ),
-        ));
+      width: double.infinity,
+      height: double.infinity,
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage(
+                'assets/images/shoes.png',
+              ),
+              fit: BoxFit.contain)),
+    ));
   }
 }

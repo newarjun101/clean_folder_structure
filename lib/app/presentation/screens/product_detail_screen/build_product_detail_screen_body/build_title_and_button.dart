@@ -40,7 +40,7 @@ class BuildTitleAndButton extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                    onTap: ()=> productDetailVM.decrement(),
+                    onTap: () => productDetailVM.decrement(),
                     child: Icon(
                       Icons.remove,
                       size: 18.sp,
@@ -48,7 +48,7 @@ class BuildTitleAndButton extends StatelessWidget {
                     ),
                   ),
                   Obx(
-                    ()=> TextView(
+                    () => TextView(
                       title: productDetailVM.counter.toString(),
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
@@ -57,7 +57,7 @@ class BuildTitleAndButton extends StatelessWidget {
                     ),
                   ),
                   GestureDetector(
-                    onTap: ()=> productDetailVM.increment(),
+                    onTap: () => productDetailVM.increment(),
                     child: Icon(
                       Icons.add,
                       size: 18.sp,

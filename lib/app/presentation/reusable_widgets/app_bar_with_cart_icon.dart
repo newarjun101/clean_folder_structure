@@ -20,12 +20,13 @@ class AppBarWithCartIcon extends StatelessWidget with PreferredSizeWidget {
       required this.leadingIcon,
       required this.title,
       required this.onClick,
-      required this.count, required this.logout, required this.onDrawerClick})
+      required this.count,
+      required this.logout,
+      required this.onDrawerClick})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     return AppBar(
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       centerTitle: true,
@@ -48,8 +49,16 @@ class AppBarWithCartIcon extends StatelessWidget with PreferredSizeWidget {
       actions: [
         GestureDetector(
             onTap: logout,
-            child: Center(child: TextView(title: "Logout",textColor: Colors.red, fontSize: kLargeFont16.sp,fontWeight: FontWeight.bold,))),
-        SizedBox(width: 6.w,),
+            child: Center(
+                child: TextView(
+              title: "Logout",
+              textColor: Colors.red,
+              fontSize: kLargeFont16.sp,
+              fontWeight: FontWeight.bold,
+            ))),
+        SizedBox(
+          width: 6.w,
+        ),
         GestureDetector(
           onTap: onClick,
           child: Container(
