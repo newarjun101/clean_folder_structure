@@ -18,11 +18,11 @@ class APIService {
       final response = await http.post(Uri.parse(kBaseUrl + url),
           body: param != null ? jsonEncode(param) : {},
           headers: isHeader ?? false
-              ? {
+              ?  getHeaderWithToken() : {
                   "Content-type": "application/json",
                   "Accept": "application/json"
                 }
-              : {});
+              );
       responseJson = _response(response);
     } on SocketException {
       throw FetchDataException('No Internet connection');

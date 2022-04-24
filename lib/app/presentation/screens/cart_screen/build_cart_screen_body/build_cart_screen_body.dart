@@ -148,9 +148,10 @@ class BuildCartScreenBody extends StatelessWidget {
                 buttonTextColor: Theme.of(context).colorScheme.primaryContainer,
                 buttonText: 'Check Out',
                 onClick: () {
-                  CartDb().deleteCart();
-                  Get.find<HomeScreenViewModel>().readFromHiveAndAddingIntoAllTicketModel();
-                  Get.offAndToNamed(RoutePagesName.kSuccess);
+
+                  cartViewModel.onCheckout(context: context);
+                //  Get.find<HomeScreenViewModel>().readFromHiveAndAddingIntoAllTicketModel();
+                 // Get.offAndToNamed(RoutePagesName.kSuccess);
                 },
                 fontWeight: FontWeight.bold,
               ),

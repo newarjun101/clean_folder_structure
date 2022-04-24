@@ -11,14 +11,16 @@ class AppBarWithCartIcon extends StatelessWidget with PreferredSizeWidget {
   final String leadingIcon;
   final String title;
   final RxInt count;
+  final VoidCallback logout;
   final VoidCallback onClick;
+  final VoidCallback onDrawerClick;
 
   const AppBarWithCartIcon(
       {Key? key,
       required this.leadingIcon,
       required this.title,
       required this.onClick,
-      required this.count})
+      required this.count, required this.logout, required this.onDrawerClick})
       : super(key: key);
 
   @override
@@ -28,19 +30,26 @@ class AppBarWithCartIcon extends StatelessWidget with PreferredSizeWidget {
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       centerTitle: true,
       elevation: 0,
-      leading: Center(
-          child: SvgPicture.asset(
-        "assets/images/drawer_icon.svg",
-        width: 18.h,
-        height: 18.h,
-        color: Theme.of(context).colorScheme.onPrimary,
-      )),
+      leading: GestureDetector(
+        onTap: onDrawerClick,
+        child: Center(
+            child: SvgPicture.asset(
+          "assets/images/drawer_icon.svg",
+          width: 18.h,
+          height: 18.h,
+          color: Theme.of(context).colorScheme.onPrimary,
+        )),
+      ),
       title: TextView(
         title: title,
         fontSize: kLargeFont16.sp,
         fontWeight: FontWeight.bold,
       ),
       actions: [
+        GestureDetector(
+            onTap: logout,
+            child: Center(child: TextView(title: "Logout",textColor: Colors.red, fontSize: kLargeFont16.sp,fontWeight: FontWeight.bold,))),
+        SizedBox(width: 6.w,),
         GestureDetector(
           onTap: onClick,
           child: Container(

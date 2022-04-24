@@ -29,7 +29,7 @@ class HomeScreenViewModel extends GetxController {
   RxInt mTotalCart = 0.obs;
 
   final RefreshController refreshController =
-      RefreshController(initialRefresh: false);
+  RefreshController(initialRefresh: false);
 
   HomeScreenViewModel() {
     //token.value =GetStorage().read(kToken);
@@ -49,7 +49,6 @@ class HomeScreenViewModel extends GetxController {
     ever(mTotalCart, (value) {
       readFromHiveAndAddingIntoAllTicketModel();
       mCartList.refresh();
-      print("value is $mTotalCart");
     });
     super.onInit();
   }
@@ -141,4 +140,23 @@ class HomeScreenViewModel extends GetxController {
           backgroundColor: Colors.grey.withOpacity(0.6));
     }
   }
+
+  ///logout
+  onLogoutClick() {
+    GetStorage().remove(kToken);
+    Get.offAndToNamed(RoutePagesName.kLogin);
+    Get.snackbar("Logout Successful", "Good Luck!!!!",
+        //    icon: Icon(Icons.person, color: Colors.white),
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.grey.withOpacity(0.6));
+  }
+  
+  ///comming soon
+     onDrawerIconClick() {
+       Get.snackbar("Drawer Feature", "Coming Soon",
+           //    icon: Icon(Icons.person, color: Colors.white),
+           snackPosition: SnackPosition.BOTTOM,
+           backgroundColor: Colors.grey.withOpacity(0.6));
+    
+     }
 }

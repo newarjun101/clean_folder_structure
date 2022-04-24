@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
         title: 'Home',
         leadingIcon: "assets/images/drawer_icon.svg",
         onClick: () => homeViewModel.routeToCartScreen(),
-        count: homeViewModel.mTotalCart,
+        count: homeViewModel.mTotalCart, logout: ()=>homeViewModel.onLogoutClick(), onDrawerClick: ()=> homeViewModel.onDrawerIconClick(),
        ),
       body: SmartRefresher(
           enablePullDown: true,

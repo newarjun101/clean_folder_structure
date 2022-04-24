@@ -57,6 +57,11 @@ class ProductDetailViewModel extends GetxController {
         lineTotal: 10);
     CartDb().saveCart(cartProductModel);
     Get.find<HomeScreenViewModel>().readFromHiveAndAddingIntoAllTicketModel();
+    Get.snackbar("New Data Added",
+        "Thank you for choosing this product",
+        //    icon: Icon(Icons.person, color: Colors.white),
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.grey.withOpacity(0.6));
   }
 
   ///read cart data from hive database
@@ -65,4 +70,8 @@ class ProductDetailViewModel extends GetxController {
     mCartList.value = getAllCart;
     mTotalCart.value = mCartList.length;
   }
+
+
+  ///post checkout data to server
+
 }

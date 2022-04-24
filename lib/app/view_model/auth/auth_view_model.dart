@@ -21,6 +21,7 @@ class AuthViewModel extends GetxController {
   RxBool isVisible = true.obs;
   APIService apiService = APIService();
 
+  ///login
   Future<void> login({required username, required password, context}) async {
     showLoaderDialog(context);
 
@@ -53,10 +54,12 @@ class AuthViewModel extends GetxController {
     }
   }
 
+  ///password visible or not
   onPasswordOnOff() {
     isVisible.toggle();
   }
 
+  ///create account
   Future<void> createAccount(
       {required username, required password, context}) async {
     showLoaderDialog(context);
